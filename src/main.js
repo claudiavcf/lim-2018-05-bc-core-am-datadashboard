@@ -1,166 +1,171 @@
+//CON TABLA
 //Variables para jalar data
-const allCohorts = '../data/cohorts.json';
-const usersPrecore = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const progressUsers = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-//Variables
-const listUsers = document.getElementById('nomEstudiantes');
-const listProgress = document.getElementById('listProgress');
+const allCohortsURL = '../data/cohorts.json';
+const allUsersURL = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+const allProgressURL = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const allCohorts = [];
+const allUsers = [];
+const allProgress = [];
+let currentCohort;
+let users;
+let progress;
+let cohorts;
+let courses;
+let search;
+//Variable para tabla
+const mytable = document.getElementById('mytable');
+//Variable para combobox Cohorts
 const selectCohorts = document.getElementById('selectorOfCohorts');
-//variables de los botones
-const cohortsBtn = document.getElementById('btnCohorts');
+//Variables para ocultar y mostrar contenedor
+const home = document.getElementById('home');
+const menu_cohorts = document.getElementById('menu_cohorts');
+const listProgress = document.getElementById('containerListProgress');
 const titleListStudent = document.getElementById('titleListStudent');
 const containerListStudents = document.getElementById('listStudents');
-const btnSearch = document.getElementById('Search'); 
+const contenido = document.getElementById("contenido");
+//Variable para las funciones
 let searchName = document.getElementById('searchName');
-//Evento del boton cohorts, para q liste todos los Cohorts
-/* cohortsBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    selectCohorts.classList.remove('hidden');
+const optionOrdenar = document.getElementById('ord');
 
-    ListOfCohorts();
-});
-//Evento del selector que crea la lista de las alumnas
-selectCohorts.addEventListener('change', (e) => {
-    e.preventDefault();
-    NameUsersCohort(selectCohorts.value);
-    containerListStudents.classList.remove('hidden');
-    titleListStudent.classList.remove('hidden');
-    document.getElementById("contenido").style.display = "none";
-    document.getElementById("listStudents").style.display = "block";
-    //selectCohorts.classList.remove('hidden');
-    
-   //ListOfCohorts();
-}); */
-//Evento del boton buscar estudiante
-/*btnSearch.addEventListener('click', (e) => {
-    e.preventDefault();
-    searchStudent(searchName.value);
-});*/
-//Evento del selector que crea la lista de las alumnas
-selectCohorts.addEventListener('click', (e) => {
+const options = {
+  cohort: null,
+  cohortData: {
+    users: null,
+    progress: null
+  },
+  orderBy: 'nombre',
+  orderDirection: 'asc',
+  search: '',
+}
+
+//Dando funcionalidad a HOME del menú, para que muestre los graficos (primer div "contenido")
+home.addEventListener('click', (e) => {
   e.preventDefault();
-  NameUsersCohort(selectCohorts.value);
-  containerListStudents.classList.remove('hidden');
-  titleListStudent.classList.remove('hidden');
-  document.getElementById("contenido").style.display = "none";
-  document.getElementById("listStudents").style.display = "block";
-  selectCohorts.classList.remove('hidden');
- 
- ListOfCohorts();
+  containerListStudents.style.display = "none";
+  contenido.style.display = "block";
 });
-
-//evento del texto al filtrar estudiante
-searchName.addEventListener('keyup', (e) => {
+//Dando funcionalidad a HOME del menú, para que muestre los graficos (primer div "contenido")
+menu_cohorts.addEventListener('click', (e) => {
   e.preventDefault();
-  searchStudent(searchName.value);
+  contenido.style.display = "none";
+  containerListStudents.style.display = "block";
+  
 });
 
-//
-//
-//
+//Mostrando select Cohorts al cargar la página
+window.onload = () => {
+  ListOfCohorts();
+}
+
 //Mostrando lista de cohorts en el select:
 const ListOfCohorts = () => {
-    fetch(allCohorts, { method: 'GET' })
+  fetch(allCohortsURL, { method: 'GET' })
     .then((response) => {
       if (response.status !== 200) {
         alert('Error')
       }
       return response.json();
-      })
-   .then((responseCohorts) => {
+    })
+    .then((responseCohorts) => {
       responseCohorts.forEach(cohort => {
+        allCohorts.push(cohort);
         let cohortName = document.createElement('option');
         cohortName.value = cohort.id;
         cohortName.innerText = cohort.id;
         selectCohorts.appendChild(cohortName);
       })
-    })
-  }
-  //Dandole funcionalidad al cohort para q muestre los estudiantes
-  const NameUsersCohort = (cohortName) => {
-    let arrayUsersCohort = [];
-    fetch(usersPrecore, { method: 'GET' })
-      .then((response) => {
-        if (response.status !== 200) {
-          alert('Error')
-        }
-        return response.json();
-        })
-      .then((responseCohort) => {
-        responseCohort.forEach(user => {
-          if (user.signupCohort === cohortName) {
-            arrayUsersCohort.push(user);
-          }
-        });
-        paintUsersFromCohort(arrayUsersCohort);
-      })
-  };
- //Muestra la lista de las estudiantes, pero los nombres tienen enlace
- const paintUsersFromCohort = (arrayUsersCohort) => {
-    listUsers.innerHTML = '';
-    arrayUsersCohort.forEach(user => {
-      let createElement = document.createElement('tr');
-      let createElement_A = document.createElement('a');
-      createElement_A.innerHTML = user.name,
-      createElement_A.setAttribute('href', 'javascript;');
-      createElement_A.addEventListener('click', (e)=>{
-        e.preventDefault();
-        getUsersProgress(user.id);
-      });
-      createElement.appendChild(createElement_A);
-      listUsers.appendChild(createElement);
-      });
-  }
-  //Buscar estudiantes por su nombre
-  const searchStudent = (student) => {
-    let arrayNameUser = [];
-    //console.log(arrayNameUser + "arraynameuserinicial");
-    fetch(usersPrecore, { method: 'GET' })
+    });
+}
+
+
+const cursos = ["intro"];
+//const dataUserProgress = (cursos) => {
+
+const dataUserProgress = () => {
+  fetch(allUsersURL, { method: 'GET' })
     .then((response) => {
       if (response.status !== 200) {
         alert('Error')
       }
       return response.json();
-      })
-      .then((dataOfUsers) => {
-        //console.log(dataOfUsers + "dataofuser en then")
-        dataOfUsers.forEach(user => { // recorrer la data
-          //console.log(dataOfUsers.forEach + "dataofuser en foreach")
-          if (user.name === student) {
-            arrayNameUser.push(user); //adicionar elemento al array
-            //console.log(arrayNameUser.push(user) +"arraynameuser.push(user)")
-          }
-        });
-        paintUsersFromCohort(arrayNameUser);
-        //console.log( paintUsersFromCohort(arrayNameUser)+" paintUsersFromCohort(arrayNameUser)")
-      })
-  };
-//Relacionarlo con el progreso del estudiante
-const getUsersProgress = (idStudent) => {
-  fetch(progressUsers, { method: 'GET' })
-  .then((response) => {
-    if (response.status !== 200) {
-      alert('Error')
-    }
-    return response.json();
     })
-    .then((progressStudent) => {
-      let progressUser = progressStudent[idStudent]["intro"]["percent"];
-      createContainerForScore(progressUser);
-       console.log(progressUser);
-       document.getElementById("listStudents").style.display = "none";
-       document.getElementById("ProgressStudent").style.display = "block";
+    .then((users) => {
+      console.log(users)
+      options.cohortData.users = users
+      fetch(allProgressURL, { method: 'GET' })
+        .then((response) => {
+          if (response.status !== 200) {
+            alert('Error')
+          }
+          return response.json();
+        })
+        .then((progress) => {
+          options.cohortData.progress = progress;
+          options.cohort = cursos;
+          options.search = searchName.value;
+          //options.search = search;
+          console.log(options);
+          const listaEstudiantes = processCohortData(options);
+          pintar(listaEstudiantes);
+
+        })
     })
 };
-const createContainerForScore=(scoreForStudent)=>{
-  listProgress.innerHTML="";
-  let createElement_Li = document.createElement('li');
-  createElement_Li.innerText = scoreForStudent;
-  let createElementP = document.createElement('p');
-  createElementP.innerText = "Porcentaje de completidud de todos los cursos";
-  listProgress.appendChild(createElementP);
-  listProgress.appendChild(createElement_Li);
+
+selectCohorts.addEventListener('change',()=>{
+  console.log(selectCohorts.value)
+  const nameCohort = selectCohorts.value;
+  dataUserProgress();
+})
+
+searchName.addEventListener('input', (e) => {
+  console.log(e.target.value);
+
+  options.search = searchName.value;
+  console.log(options);
+  const listaEstudiantes= processCohortData(options)
+  mytable.innerHTML = '';
+  pintar(listaEstudiantes);
+ 
   
+});
+
+optionOrdenar.addEventListener('change', ()=>{
+
+  
+  //const valorOrden = optionOrdenar.options[optionOrdenar.selectedIndex].value;
+  const valorOrden = optionOrdenar.value;
+  
+  const ordenar = valorOrden.split('|')
+  
+  options.orderBy = ordenar[0];
+  options.orderDirection = ordenar[1];
+    
+  const listaEstudiantes = processCohortData(options)
+  mytable.innerHTML = '';
+  pintar(listaEstudiantes);
+});
+
+
+const pintar = (dataUserWithStats) => {
+  mytable.innerHTML = "";
+  dataUserWithStats.forEach((user) => {
+    let totalPercent = (user.stats.percent === undefined || NaN) ? 0 : user.stats.percent;
+    let readsPercent = isNaN(user.stats.reads.percent) ? 0 : user.stats.reads.percent;
+    let exercisesPercent = isNaN(user.stats.exercises.percent) ? 0 : user.stats.exercises.percent;
+    let quizzesPercent = isNaN(user.stats.quizzes.percent) ? 0 : user.stats.quizzes.percent;
+    const row = document.createElement('tr')
+    row.innerHTML = `<td>${user.name}</td><td>${totalPercent}%</td><td>${readsPercent}%</td><td>${exercisesPercent}%</td><td>${quizzesPercent}%</td><td>${user.stats.quizzes.scoreAvg}</td>`;
+    mytable.appendChild(row)
+  })
 }
+
+
+
+ 
+
+
+
+
 
 

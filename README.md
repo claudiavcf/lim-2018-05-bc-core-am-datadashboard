@@ -70,11 +70,20 @@ A continuación, nuestro prototipo de alta fidelidad:
 
 ![Sin titulo](http://subirimagen.me/uploads/20180615105423.png)
 
-
 ![Sin titulo](http://subirimagen.me/uploads/20180622082148.png)
+
+A continuación el Flujo Grama:
+
+![Sin titulo](http://subirimagen.me/uploads/20180625081814.png)
 
 ## Sprint 2
 
 En el segundo sprint, nos enfocaremos principalmente en la funcionalidad dada en el javascript, por lo menos realizar la primera función, pues ya tenemos un html y css básico.
 
 ![Sin titulo](http://subirimagen.me/uploads/20180621221236.jpg)
+
+## Sprint 3
+
+En el tercer sprint, debido a que sólo logramos la primera función requerida, nos enfocaremos ha implementar nuestra función de búsqueda y ordenado de la información de los alumnos, dar algunas modificaciones al html y css.
+
+![Sin titulo](http://subirimagen.me/uploads/20180702075222.jpg)

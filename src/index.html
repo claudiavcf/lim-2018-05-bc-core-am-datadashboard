@@ -5,267 +5,124 @@
   <meta charset="utf-8">
   <title>Data Dashboard</title>
   <meta name="viewport" content="width = device-width, maximum-scale=1, initial-scale = 1.0">
-  <!--Para que sea responsive-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet prefetch" href="https://cdn.datatables.net/responsive/1.0.4/css/dataTables.responsive.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <header>
-    <img id="logo" src="http://subirimagen.me/uploads/20180612082453.png">
-  </header>
   <div id="root">
+
     <div id="info">
-      <div id="usuario">
-        <table>
-          <tr>
-            <td>
-              <img id="ale" src="http://subirimagen.me/uploads/20180612091446.jpg">
-            </td>
-            <td id="nameAle">Alejandra Ramírez
-              <br>Training Manager</td>
-          </tr>
-        </table>
-        <!-- <p><img id="ale" src="http://subirimagen.me/uploads/20180612091446.jpg">Alejandra Ramírez <br> Pesonal Trainer </p> -->
+      <div>
+        <img id="logo" src="http://subirimagen.me/uploads/20180612082453.png">
       </div>
       <hr>
-      <div>
-        <!--<h3>SEDES</h3>
-        <br>
-        <select>
-          <option value="p2017">LIMA</option>
-          <option value="p20181">2018-01</option>
-          <option value="p20182">2018-02</option>
-        </select>
-        <br>
-        <select>
-          <option value="p2017">Mexico DC</option>
-          <option value="p20181">2018-01</option>
-          <option value="p20182">2018-02</option>
-        </select>
-        <br>
-        <select>
-          <option value="p2017">Sao Paulo</option>
-          <option value="p20181">2018-01</option>
-          <option value="p20182">2018-02</option>
-        </select>
-        <br>
-        <select>
-          <option value="p2017">Santiago</option>
-          <option value="p20181">2018-01</option>
-          <option value="p20182">2018-02</option>
-        </select>
-        <option value="p20181">2018-01</option>
-        <option value="p20182">2018-02</option>
-        </select>
-        <br>
-        <select>
-          <option value="p2017">Santiago</option>
-          <option value="p20181">2018-01</option>
-          <option value="p20182">2018-02</option>
-        </select>-->
+      <div id="usuario">
+        <div id="fotoAle">
+          <img id="ale" src="http://subirimagen.me/uploads/20180612091446.jpg">
+        </div>
+        <div id="aleName">
+          <p id="nameAle">Alejandra Ramírez
+            <br>Training Manager</p>
+        </div>
+      </div>
+      <hr>
+      <div id="sedesylistas">
         <nav>
-            <ul class="acorh">
-              <li>
-                <a href="#"><span class="icon-home"></span> Home</a>
-              </li>
-              <li class="submenu">
-                <a href="#">
-                  <span class="icon-rocket"></span> Sedes
-                  <span class="caret icon-arrow-down6"></span>
-                </a>
-                <ul class="children">
-                  <li class="submenu2">
-                    <a  class ='branch' href="#"><span class="icon-stats-dots"></span> Lima</a>
-                    <ul class="children2">
-                      <li class="submenu3">
-                       
-                        <ul class="children3">
-                          <li id="dataL_2017I">
-                            <a href="#">2017 - I
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="submenu3">
-                        
-                        <ul class="children3">
-                          <li id="dataL_2017II">
-                            <a href="#">2017 - II
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-
-                      <li class="submenu4">
-                        
-                          <ul class="children3">
-                            <li id="dataL_2018I">
-                              <a href="#">2018 - I
-                                <span class="year"></span>
-                              </a>
-                            </li>
-                          </ul>
-                        </li>
-                    </ul>
-                  </li>
-                  <li class="submenu2">
-                    <a class ='branch' href="#"><span class="icon-stats-dots"></span> México</a>
-                    <ul class="children2">
-                      <li class="submenu3">
-                        
-                        <ul class="children3">
-                          <li id="dataM_2017I">
-                            <a href="#">2017 - I
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                          <li id="dataM_2017II">
-                            <a href="#">2017 - II
-                              <span class="year"></span>
-                            </a>
-                            <li id="dataM_2018I">
-                                <a href="#">2018 - I
-                                  <span class="year"></span>
-                                </a>
-                              </li>
-
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="submenu2">
-                    <a class ='branch' href="#"> <span class="icon-stats-dots"></span> Sao Paulo</a>
-                    <ul class="children2">
-                      <li class="submenu3">
-                        
-                        <ul class="children3">
-                          <li id="dataS_2017I">
-                            <a href="#">2017 - I
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                          <li id="dataS_2017II">
-                            <a href="#">2017 - II
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="submenu3">
-                        
-                        <ul class="children3">
-                          <li id="dataS_2018I">
-                            <a href="#">2018 - I
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="submenu2">
-                    <a class ='branch' href="#"><span class="icon-stats-dots"></span> Chile</a>
-                    <ul class="children2">
-                      <li class="submenu3">
-                        
-                        <ul class="children3">
-                          <li id="dataC_2017I">
-                            <a href="#">2017 - I
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                          <li id="dataC_2017II">
-                            <a href="#">2017 - II
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="submenu3">
-                        
-                        <ul class="children3">
-                          <li id="dataC_2018I">
-                            <a href="#">2018 - I
-                              <span class="year"></span>
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-          </nav>
-
-        <form>
-         <!-- <button id="btnCohorts">Cohorts</button> -->
-        <center><label>LISTA DE COHORTS</label></center>
-        <select id='selectorOfCohorts' class="hidden" name="Lista Cohorts"></select>
-          
-
-
-
-          <!--<input type="button" class="botones" id="boton1" value="Lista de Cohorts">-->
-          <ul id="listaCohortsUl">
+          <ul class="acorh">
+            <li id="home">
+              <a href="#">
+                <span class="icon-home"></span> Home</a>
+            </li>
+            <li class="submenu" id="menu_cohorts">
+              <a href="#">
+                <span class="icon-rocket"></span> Cohorts
+                <span class="caret icon-arrow-down6"></span>
+              </a>
+            </li>
           </ul>
-        </form>
+        </nav>
+
       </div>
     </div>
+
     <div id="contenido">
       <h2>DATA DASHBOARD</h2>
       <form>
-        <center>
-          <img class="diagrama" id="grafico1" src="http://subirimagen.me/uploads/20180614210541.jpg">
-        </center>
+        <img class="diagrama" id="grafico1" src="http://subirimagen.me/uploads/20180614210541.jpg">
         <img class="diagrama" id="grafico2" src="http://subirimagen.me/uploads/20180614210619.jpg">
       </form>
     </div>
+
     <div id="listStudents" class="infoHidden">
-      <h2 id="titleListStudent">PRE CORE 2018 - 03</h2>
-      <!--<button id="Search">Buscar</button>-->
-      <!-- <input type="text" id="searchName" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" />-->
-      <label for="tituloEstudiantes" id="tituloEstudiantes">LISTA DE ESTUDIANTES</label> 
-   
-      <input id="searchName" type="text" placeholder="Search for names.." title="Type in a name" />
+      <h2 id="titleListStudent">COHORTS</h2>
+      <div id="divElige">
+        <br>
+        <label for="selectorOfCohorts" class="">Elige Cohort:</label>
+      </div>
+      <div id="divCohort">
+        <select id="selectorOfCohorts" class="hidden" name="Lista Cohorts"></select>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <label for="tituloEstudiantes" id="tituloEstudiantes">
+        <u>LISTA DE ESTUDIANTES</u>
+      </label>
       <form>
-        <!--<select>
-          <option value="p2017">LIMA</option>
-        </select>
-        <input type="button" class="botones" id="boton2" value="Lista de Estudiantes">-->
-
-
-        <table id='mytable' style="width:400px">
-            <!--border="1"-->
-          <tr class="header">
-            <th>Nombre</th>
-            <!-- <th>ID</th> -->
-          </tr>
+      <div class="orderYbuscador" id="Ordenar">
+        <p>Ordenar por:
+          <select id= "ord" style="width:250px">
+            <option selected>Selecciona...</option>
+            <optgroup label="Ascendente"></optgroup>
+            <option value="nombre|asc">Nombre</option>
+            <option value="porcentaje|asc">Completitud general</option>
+            <option value="lecturas|asc">Completitud Lecturas</option>
+            <option value="ejercicios|asc">Completitud Ejercicios</option>
+            <option value="quizzes|asc">Completitud Quizzes</option>
+            <option value="scoreAvg|asc">Promedio Quizzes</option>
+            
+            <optgroup label="Descendente"></optgroup>
+            <option value="nombre|desc">Nombre</option>
+            <option value="porcentaje|desc">Completitud general</option>
+            <option value="lecturas|desc">Completitud Lecturas</option>
+            <option value="ejercicios|desc">Completitud Ejercicios</option>
+            <option value="quizzes|desc">Completitud Quizzes</option>
+            <option value="scoreAvg|desc">Promedio Quizzes</option>
+           
+          </select>
+        </p>
+      </div>
+      <div class="orderYbuscador" id="Buscador">
+        
+          <input id="searchName" type="text" placeholder="Filtra por nombre.." title="Type in a name" />
+      </div>
+      <table class="table" >
+        <thead>
           <tr>
-            <td id="nomEstudiantes"></td>
-            <!-- <td id= "idUsers"></td>  -->
+            <th>Nombre</th>
+            <th>Completitud General</th>
+            <th>Completitud de Lecturass</th>
+            <th>Completitud Ejercicios</th>
+            <th>Completitud de Quizzes</th>
+            <th>Promedio de Quizzes</th>
           </tr>
-
-        </table>
-
-      </form>
-
-
+        </thead>
+        <tbody id="mytable">
+        </tbody>
+      </table>
+    </form>
     </div>
     <div id="ProgressStudent" class="infoHidden">
       <h2>PROGRESO ALUMNA</h2>
       <ul class="listProgress" id="containerListProgress"></ul>
     </div>
-
-
-
   </div>
-
+  <script src="data.js"></script>
   <script src="main.js"></script>
-  <!-- <script src="data.js"></script> -->
+
 </body>
 
 </html>
-
-
