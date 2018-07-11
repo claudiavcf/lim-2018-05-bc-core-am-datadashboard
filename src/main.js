@@ -4,9 +4,6 @@ const allCohortsURL = '../data/cohorts.json';
 const allUsersURL = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const allProgressURL = '../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const allCohorts = [];
-const allUsers = [];
-const allProgress = [];
-let currentCohort;
 let users;
 let progress;
 let cohorts;
@@ -44,6 +41,7 @@ home.addEventListener('click', (e) => {
   containerListStudents.style.display = "none";
   contenido.style.display = "block";
 });
+
 //Dando funcionalidad a HOME del menú, para que muestre los graficos (primer div "contenido")
 menu_cohorts.addEventListener('click', (e) => {
   e.preventDefault();
