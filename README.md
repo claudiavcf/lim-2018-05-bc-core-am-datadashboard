@@ -87,3 +87,13 @@ En el segundo sprint, nos enfocaremos principalmente en la funcionalidad dada en
 En el tercer sprint, debido a que sólo logramos la primera función requerida, nos enfocaremos ha implementar nuestra función de búsqueda y ordenado de la información de los alumnos, dar algunas modificaciones al html y css.
 
 ![Sin titulo](http://subirimagen.me/uploads/20180702075222.jpg)
+
+## Sprint 4
+
+En el cuarto sprint, se cumplió con las 4 funciones, y se realizó algunas modificaciones al html, pero faltó mejorar css.
+
+![Sin titulo](http://subirimagen.me/uploads/20180702075222.jpg)
+
+Finalmente el proyecto nos muestra de la siguiente manera:
+
+![Sin titulo](http://subirimagen.me/uploads/20180711101326.jpg)
